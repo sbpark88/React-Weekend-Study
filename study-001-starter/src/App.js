@@ -1,9 +1,12 @@
-function App() {
-  return (
-      <div className="App">
-        <h1>Hello</h1>
-      </div>
-  );
-}
+import {Header, Footer, Section} from "./Common";
+
+const App = () => (
+    <>
+      <Header/>
+      <Section/>
+      <Footer/>
+    </>
+)
+
 
 export default App;
