@@ -9,7 +9,8 @@ const App = () => {
     <>
       {/*<ImportImage />*/}
       {/*<WebFont />*/}
-      <ReactFontAwesome />
+      {/*<ReactFontAwesome />*/}
+      <ReactMotion />
     </>
   );
 };
