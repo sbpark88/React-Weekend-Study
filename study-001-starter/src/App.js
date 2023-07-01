@@ -1,12 +1,18 @@
-import {Header, Footer, Section} from "./Common";
+import "./css/style.scss";
+import Popup from "./Popup";
+import { useState } from "react";
 
-const App = () => (
+const App = () => {
+  const [visible, setVisible] = useState(true);
+
+  return (
     <>
-      <Header/>
-      <Section/>
-      <Footer/>
+      <main>
+        <h1 onClick={() => setVisible((old) => !old)}>메인 콘텐츠</h1>
+        {visible && <Popup />}
+      </main>
     </>
-)
-
+  );
+};
 
 export default App;
