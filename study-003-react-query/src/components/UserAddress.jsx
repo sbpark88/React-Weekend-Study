@@ -2,7 +2,7 @@ import React from "react";
 import { useUserQuery } from "../hooks/useUsers";
 
 function UserAddress() {
-  const query = useUserQuery();
+  const query = useUserQuery(2);
   const { data, isSuccess, isError } = query;
 
   return (
