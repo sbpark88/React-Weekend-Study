@@ -1,17 +1,16 @@
 import React from "react";
 import { useUserQuery } from "../hooks/useUsers";
 
-function UserInfo() {
+function UserAddress() {
   const query = useUserQuery();
   const { data, isSuccess, isError } = query;
 
   return (
     <div>
-      <h1>User Information</h1>
-      {isSuccess && <h2>{data.name}</h2>}
-      {isError && <p>Data fetching 에 실패했습니다.</p>}
+      <h1>User Address</h1>
+      {isSuccess && <p>{data.address.street}</p>}
     </div>
   );
 }
 
-export default UserInfo;
+export default UserAddress;

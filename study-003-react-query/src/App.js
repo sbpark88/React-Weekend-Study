@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import UserInfo from "./components/UserInfo";
+import UserAddress from "./components/UserAddress";
 
 const queryClient = new QueryClient();
 
@@ -11,6 +12,8 @@ function App() {
         <h1>Json Placeholder</h1>
       </div>
       <UserInfo />
+      <UserAddress />
+
       <ReactQueryDevtools />
     </QueryClientProvider>
   );
