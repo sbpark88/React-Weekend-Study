@@ -15,6 +15,9 @@ function Menu() {
         <li>
           <Link to="/address">User Address</Link>
         </li>
+        <li>
+          <Link to="/userUpdate">User Update</Link>
+        </li>
       </ul>
     </nav>
   );

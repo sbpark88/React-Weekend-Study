@@ -5,6 +5,7 @@ import UserAddress from "./components/UserAddress";
 import Menu from "./components/common/Menu";
 import { Route, Routes } from "react-router-dom";
 import Main from "./components/Main";
+import UserUpdate from "./components/UserUpdate";
 
 const queryClient = new QueryClient();
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<Main />} />
           <Route path="/info" element={<UserInfo />} />
           <Route path="/address" element={<UserAddress />} />
+          <Route path="/userUpdate" element={<UserUpdate />} />
         </Routes>
       </div>
 
