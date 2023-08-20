@@ -2,6 +2,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import UserInfo from "./components/UserInfo";
 import UserAddress from "./components/UserAddress";
+import Menu from "./components/common/Menu";
+import { Route, Routes } from "react-router-dom";
+import Main from "./components/Main";
 
 const queryClient = new QueryClient();
 
@@ -9,10 +12,14 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="App">
-        <h1>Json Placeholder</h1>
+        <Menu />
+
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/info" element={<UserInfo />} />
+          <Route path="/address" element={<UserAddress />} />
+        </Routes>
       </div>
-      <UserInfo />
-      <UserAddress />
 
       <ReactQueryDevtools />
     </QueryClientProvider>

@@ -6,7 +6,11 @@ function UserAddress() {
   const { data, isSuccess, isError } = query;
 
   return (
-    <div>
+    <div
+      style={{
+        backgroundColor: "#eea",
+      }}
+    >
       <h1>User Address</h1>
       {isSuccess && <p>{data.address.street}</p>}
     </div>
