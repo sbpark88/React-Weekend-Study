@@ -1,9 +1,11 @@
 import { useCallback, useState } from "react";
+import { flushSync } from "react-dom";
 
 function App() {
   console.log("render");
   const [count1, setCount1] = useState(0);
   const [count2, setCount2] = useState(0);
+  const [count3, setCount3] = useState(0);
   const returnPromise = useCallback(
     () => new Promise((res) => setTimeout(res, 500)),
     [],
@@ -14,8 +16,12 @@ function App() {
 
       setCount1(count1 + 1);
       setCount2(count2 + 2);
+
+      // 비동기 코드 안에서 강제로 automatic batching 풀기
+      flushSync(() => setCount3(count3 + 3));
+      // setTimeout(() => setCount3(count3 + 3), 0);
     },
-    [count1, count2, returnPromise],
+    [count1, count2, count3, returnPromise],
   );
 
   return (
@@ -23,6 +29,7 @@ function App() {
       <button onClick={onButtonClick}>Button</button>
       <h1>count1 : {count1}</h1>
       <h1>count2 : {count2}</h1>
+      <h1>count3 : {count3}</h1>
     </div>
   );
 }
@@ -37,4 +44,5 @@ export default App;
  *
  * React 17 : automatic batching 이 synchronous 에서만 작동.
  * React 18 : automatic batching 이 synchronous, asynchronous 모두에서 작동.
+ *            (비동기 코드 안에 또 다른 비동기, 즉, 2-depth 까지 작동하지는 않음.)
  * */
