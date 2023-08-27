@@ -1,10 +1,30 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 
 function UseTransition(props) {
   const [count, setCount] = useState(0);
   const [array, setArray] = useState([]);
+  const onButtonClick = useCallback(
+    (event) => {
+      setCount((prevState) => prevState + 1);
+      const largeArray = Array.from(
+        { length: 30000 },
+        (_, index) => count + index,
+      );
+      setArray(largeArray);
+    },
+    [count],
+  );
 
-  return <></>;
+  return (
+    <>
+      <button onClick={onButtonClick}>{count}</button>
+      <ul>
+        {array.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+    </>
+  );
 }
 
 export default UseTransition;
