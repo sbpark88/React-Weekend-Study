@@ -3,21 +3,30 @@ import React, { useCallback, useState } from "react";
 function UseTransition(props) {
   const [count, setCount] = useState(0);
   const [array, setArray] = useState([]);
+  const [isPending, setIsPending] = useState(false);
+  console.log(isPending);
+
   const onButtonClick = useCallback(
     (event) => {
       setCount((prevState) => prevState + 1);
-      const largeArray = Array.from(
-        { length: 30000 },
-        (_, index) => count + index,
-      );
-      setArray(largeArray);
+      setIsPending(true);
+      setTimeout(() => {
+        const largeArray = Array.from(
+          { length: 30000 },
+          (_, index) => count + index,
+        );
+        setArray(largeArray);
+        setIsPending(false);
+      }, 0);
     },
     [count],
   );
 
   return (
     <>
-      <button onClick={onButtonClick}>{count}</button>
+      <button onClick={onButtonClick} disabled={isPending}>
+        {count}
+      </button>
       <ul>
         {array.map((item) => (
           <li key={item}>{item}</li>
