@@ -22,8 +22,9 @@ function UseTransition(props) {
 
   return (
     <>
+      <h1>Count: {count}</h1>
       <button onClick={onButtonClick} disabled={isPending}>
-        {count}
+        증가
       </button>
       <ul>
         {array.map((item) => (
