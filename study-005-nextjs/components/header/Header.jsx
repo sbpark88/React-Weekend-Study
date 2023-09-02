@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 
 function Header(props) {
   const url = useRouter().route;
-  console.log(url);
   return (
     <header className={styles.header}>
       <h1>
@@ -24,6 +23,11 @@ function Header(props) {
           </Link>
         </li>
         <li>
+          <Link href="/csr" className={url === "/csr" ? styles.on : ""}>
+            CSR
+          </Link>
+        </li>
+        <li>
           <Link href="/ssg" className={url === "/ssg" ? styles.on : ""}>
             SSG
           </Link>
@@ -36,6 +40,11 @@ function Header(props) {
         <li>
           <Link href="/isr" className={url === "/isr" ? styles.on : ""}>
             ISR
+          </Link>
+        </li>
+        <li>
+          <Link href="/404" className={url === "/404" ? styles.on : ""}>
+            404
           </Link>
         </li>
       </ul>
