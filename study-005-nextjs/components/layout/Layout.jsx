@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Layout.module.scss";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import Header from "@/components/header/Header";
 
 function Layout({ children }) {
   const router = useRouter();
@@ -16,6 +17,7 @@ function Layout({ children }) {
       <Head>
         <title>{title + " Page"}</title>
       </Head>
+      <Header />
       <main className={styles.layout}>{children}</main>
     </>
   );
