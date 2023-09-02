@@ -12,7 +12,7 @@ function Header(props) {
         <Link href="/">Hogwarts</Link>
       </h1>
 
-      <ul>
+      <ul className={styles.gnb}>
         <li>
           <Link href="/about" className={url === "/about" ? styles.on : ""}>
             About
