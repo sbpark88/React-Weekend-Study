@@ -43,6 +43,11 @@ function Header(props) {
           </Link>
         </li>
         <li>
+          <Link href="/post" className={url === "/post" ? styles.on : ""}>
+            POST
+          </Link>
+        </li>
+        <li>
           <Link href="/404" className={url === "/404" ? styles.on : ""}>
             404
           </Link>
