@@ -3,6 +3,8 @@
     "prettier": "^3.0.3"
   },
   "dependencies": {
+    "clsx": "^2.0.0",
+    "react-spinners": "^0.13.8",
     "sass": "^1.66.1"
   }
 }
