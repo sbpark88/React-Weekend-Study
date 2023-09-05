@@ -23,13 +23,16 @@ export default function Home() {
           />
         </div>
         <div>
+          {/* placeholder 를 주지 않으면 기본값으로 이미지가 로딩됨에 계단 처럼 그려진다. */}
           <Image src={pic2} alt="pic2" quality={30} />
         </div>
         <div>
-          <Image src={pic3} alt="pic3" quality={30} />
+          {/* 우리가 생각하는 'blur' 와는 좀 다르다. 거의 단세포 수준의 blur 처리 */}
+          <Image src={pic3} alt="pic3" quality={30} placeholder="blur" />
         </div>
         <div>
-          <Image src={pic4} alt="pic4" quality={30} />
+          {/* placeholder 'empty' 는 없다가 로딩 완료 후 한 번에 쨘 하고 나타난다. */}
+          <Image src={pic4} alt="pic4" quality={30} placeholder="empty" />
         </div>
         <div>
           <Image src={pic5} alt="pic5" quality={30} />
