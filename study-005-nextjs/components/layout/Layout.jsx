@@ -4,6 +4,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import Header from "@/components/header/Header";
 import { Dongle } from "next/font/google";
+import clsx from "clsx";
 
 const dongle = Dongle({
   style: "normal",
@@ -26,7 +27,7 @@ function Layout({ children }) {
         <title>{title + " Page"}</title>
       </Head>
       <Header />
-      <main className={`${styles.layout} ${dongle.className}`}>{children}</main>
+      <main className={clsx(styles.layout, dongle.className)}>{children}</main>
     </>
   );
 }
