@@ -5,6 +5,8 @@ import pic3 from "@/public/images/pic3.jpg";
 import pic4 from "@/public/images/pic4.jpg";
 import pic5 from "@/public/images/pic5.jpg";
 import Image from "next/image";
+import { FadeLoader } from "react-spinners";
+import { useState } from "react";
 
 export default function Home() {
   return (
@@ -57,12 +59,8 @@ export default function Home() {
         <div>
           <Image src={externalImages.pic8} alt="pic8" fill quality={30} />
         </div>
-        <div>
-          <Image src={externalImages.pic9} alt="pic9" fill quality={30} />
-        </div>
-        <div>
-          <Image src={externalImages.pic10} alt="pic10" fill quality={30} />
-        </div>
+        <LoadingImage srcUrl={externalImages.pic9} alt="pic9" />
+        <LoadingImage srcUrl={externalImages.pic10} alt="pic10" />
       </main>
     </>
   );
@@ -76,3 +74,29 @@ const externalImages = {
   pic10:
     "https://images.unsplash.com/photo-1688920556232-321bd176d0b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3870&q=80",
 };
+
+function LoadingImage({ srcUrl, alt }) {
+  const [loading, setLoading] = useState(true);
+
+  return (
+    <div>
+      <FadeLoader
+        color="#36d7b7"
+        loading={loading}
+        cssOverride={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          zIndex: 10,
+        }}
+      />
+      <Image
+        src={srcUrl}
+        alt={alt}
+        fill
+        quality={30}
+        onLoadingComplete={() => setLoading(false)}
+      />
+    </div>
+  );
+}
