@@ -6,6 +6,8 @@ function About(props) {
     <>
       <main className={styles.main}>
         <h1>About</h1>
+        <div>This is not "Dongle" font. </div>
+        <p>This is "Dongle" font.</p>
       </main>
     </>
   );
