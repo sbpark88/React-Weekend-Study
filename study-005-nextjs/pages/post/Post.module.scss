@@ -1,0 +1,38 @@
+.main {
+  form {
+    div {
+      display: flex;
+      margin: 10px;
+
+      label {
+        font-size: 30px;
+        display: flex;
+        justify-content: left;
+        align-items: start;
+        margin-right: 20px;
+        min-width: 120px;
+      }
+
+      input[type="text"] {
+        font: normal 30px/1.4 'sans-serif';
+        width: 100%;
+        font-size: 20px;
+      }
+
+      textarea {
+        font: normal 23px/1.4 'sans-serif';
+        width: 100%;
+        resize: none;
+      }
+
+      button {
+        flex: auto;
+        margin: 20px 0;
+        border-radius: 15px;
+        border: 1px solid #afbda1;
+        height: 50px;
+        font-weight: 700;
+      }
+    }
+  }
+}
