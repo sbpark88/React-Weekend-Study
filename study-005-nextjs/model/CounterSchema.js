@@ -2,8 +2,8 @@ import mongoose from "mongoose";
 
 const counterSchema = new mongoose.Schema(
   {
-    collectionName: String,
-    nextIndex: Number,
+    title: String,
+    postNum: Number,
   },
   {
     collection: "Counter",
