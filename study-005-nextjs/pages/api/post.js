@@ -10,17 +10,15 @@ export default async function handler(req, res) {
     await connectMongoDB();
     fetchPost[req.method](req, res);
   } catch (error) {
-    console.log("ddddddd");
     res.send({ success: false, error });
   }
 }
 
 const getPost = async (req, res) => {
   try {
-    const response = await Counter.find({}).exec();
+    const response = await Post.find({}).exec();
     res.send({ success: true, response });
   } catch (error) {
-    console.log("eeeeee");
     res.send({ success: false, error });
   }
 };
@@ -41,7 +39,6 @@ const createPost = async (req, res) => {
     await fetchCounter.PUT(req, res, Collections.post);
     res.send({ success: true, response });
   } catch (error) {
-    console.log("ffffff");
     res.send({ success: false, error });
   }
 };
