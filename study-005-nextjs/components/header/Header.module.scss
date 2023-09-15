@@ -4,12 +4,13 @@
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   .gnb {
     display: flex;
     gap: 40px;
     color: #333;
-    
+
     .on {
       color: red;
     }

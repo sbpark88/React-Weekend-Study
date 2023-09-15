@@ -2,9 +2,14 @@ import React from "react";
 import Link from "next/link";
 import styles from "./Header.module.scss";
 import { useRouter } from "next/router";
+import { useGlobalData } from "@/hooks/useGlobalContext";
+import Login from "@/components/login/Login";
+import Logout from "@/components/login/Logout";
 
 function Header(props) {
+  const { loginInfo } = useGlobalData();
   const url = useRouter().route;
+
   return (
     <header className={styles.header}>
       <h1>
@@ -52,7 +57,17 @@ function Header(props) {
             404
           </Link>
         </li>
+        <li>
+          <Link href="/sign-up" className={url === "/sign-up" ? styles.on : ""}>
+            회원가입
+          </Link>
+        </li>
       </ul>
+
+      {/*{loginInfo?.uid ? <Login /> : <Logout />}*/}
+      <Login />
+      <Logout />
+      {/*{loginInfo?.uid ? <Login /> : <Logout /> : null}*/}
     </header>
   );
 }
