@@ -2,6 +2,8 @@ import "@/styles/globals.scss";
 import Layout from "@/components/layout/Layout";
 import Head from "next/head";
 import { GlobalProvider } from "@/hooks/useGlobalContext";
+import { DevSupport } from "@react-buddy/ide-toolbox";
+import { ComponentPreviews, useInitial } from "@/components/dev";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -13,7 +15,12 @@ export default function App({ Component, pageProps }) {
       </Head>
       <GlobalProvider>
         <Layout>
-          <Component {...pageProps} />
+          <DevSupport
+            ComponentPreviews={ComponentPreviews}
+            useInitialHook={useInitial}
+          >
+            <Component {...pageProps} />
+          </DevSupport>
         </Layout>
       </GlobalProvider>
     </>
