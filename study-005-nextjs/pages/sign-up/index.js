@@ -1,8 +1,8 @@
 import React, { useCallback, useState } from "react";
 import styles from "./SignUp.module.scss";
 import { stringIsEmpty } from "@/utils/StringUtils";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import FirebaseAuth from "@/firebase";
+import {getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import firebase from "@/firebase";
 
 function SignUp(props) {
   const [email, setEmail] = useState("");
@@ -20,7 +20,7 @@ function SignUp(props) {
         return alert("이메일, 비밀번호, 이름을 모두 입력하세요.");
 
       try {
-        const auth = FirebaseAuth;
+        const auth = getAuth(firebase);
         const userCredential = await createUserWithEmailAndPassword(
           auth,
           email,
@@ -32,11 +32,11 @@ function SignUp(props) {
         setPassword("");
         setName("");
       } catch (error) {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+        const [errorCode, errorMessage] = [error.code, error.message];
         alert(`사용자 등록을 실패하였습니다.`);
         console.error("code", errorCode, "message", errorMessage);
       }
+
     },
     [email, password, name],
   );

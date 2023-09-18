@@ -6,9 +6,26 @@ import pic4 from "@/public/images/pic4.jpg";
 import pic5 from "@/public/images/pic5.jpg";
 import Image from "next/image";
 import { FadeLoader } from "react-spinners";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { useGlobalData } from "@/hooks/useGlobalContext";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "@/firebase";
 
 export default function Home() {
+  const { setLoginInfo, resetLoginInfo } = useGlobalData();
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const uid = user?.uid;
+        const displayName = user?.displayName;
+        setLoginInfo({ uid, displayName });
+      } else {
+        resetLoginInfo();
+      }
+    });
+  }, [setLoginInfo, resetLoginInfo]);
+
   return (
     <>
       <main className={styles.main}>

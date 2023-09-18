@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import styles from "./Header.module.scss";
 import { useRouter } from "next/router";
 import { useGlobalData } from "@/hooks/useGlobalContext";
 import Login from "@/components/login/Login";
 import Logout from "@/components/login/Logout";
+import { stringIsEmpty } from "@/utils/StringUtils";
 
 function Header(props) {
   const { loginInfo } = useGlobalData();
@@ -64,10 +65,8 @@ function Header(props) {
         </li>
       </ul>
 
-      {/*{loginInfo?.uid ? <Login /> : <Logout />}*/}
-      <Login />
+      {stringIsEmpty(loginInfo?.uid) ? <Login /> : <Logout />}
       <Logout />
-      {/*{loginInfo?.uid ? <Login /> : <Logout /> : null}*/}
     </header>
   );
 }

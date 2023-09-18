@@ -1,12 +1,18 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useCallback, useContext, useState } from "react";
 
 const GlobalContext = createContext(null);
 
+const INITIAL_STATE = { displayName: "", uid: "" };
+
 export function GlobalProvider({ children }) {
-  const [loginInfo, setLoginInfo] = useState({ displayName: "", uid: "" });
+  const [loginInfo, setLoginInfo] = useState(INITIAL_STATE);
+
+  const resetLoginInfo = useCallback(() => {
+    setLoginInfo(INITIAL_STATE);
+  }, []);
 
   return (
-    <GlobalContext.Provider value={{ loginInfo, setLoginInfo }}>
+    <GlobalContext.Provider value={{ loginInfo, setLoginInfo, resetLoginInfo }}>
       {children}
     </GlobalContext.Provider>
   );
