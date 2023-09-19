@@ -66,7 +66,6 @@ function Header(props) {
       </ul>
 
       {stringIsEmpty(loginInfo?.uid) ? <Login /> : <Logout />}
-      <Logout />
     </header>
   );
 }
