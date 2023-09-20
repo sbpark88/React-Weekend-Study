@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import styles from "./Header.module.scss";
 import { useRouter } from "next/router";
@@ -8,8 +8,13 @@ import Logout from "@/components/login/Logout";
 import { stringIsEmpty } from "@/utils/StringUtils";
 
 function Header(props) {
+  const firstLoaded = useRef(true);
   const { loginInfo } = useGlobalData();
   const url = useRouter().route;
+
+  useEffect(() => {
+    firstLoaded.current = false;
+  }, [loginInfo]);
 
   return (
     <header className={styles.header}>
@@ -65,7 +70,10 @@ function Header(props) {
         </li>
       </ul>
 
-      {stringIsEmpty(loginInfo?.uid) ? <Login /> : <Logout />}
+      {!firstLoaded.current && stringIsEmpty(loginInfo?.uid) ? <Login /> : null}
+      {!firstLoaded.current && !stringIsEmpty(loginInfo?.uid) ? (
+        <Logout />
+      ) : null}
     </header>
   );
 }
