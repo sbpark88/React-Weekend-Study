@@ -70,9 +70,13 @@ function Header(props) {
         </li>
       </ul>
 
-      {!firstLoaded.current && stringIsEmpty(loginInfo?.uid) ? <Login /> : null}
-      {!firstLoaded.current && !stringIsEmpty(loginInfo?.uid) ? (
-        <Logout />
+      {/* 중첩 삼항 연산자로 표현. if~else 바깥쪽 구문이 있고, if 일 경우 안쪽에 if~else 구문이 한 번 더 있는 것과 같다. */}
+      {!firstLoaded.current ? (
+        stringIsEmpty(loginInfo?.uid) ? (
+          <Login />
+        ) : (
+          <Logout />
+        )
       ) : null}
     </header>
   );
